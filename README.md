@@ -1,4 +1,4 @@
-# Sanremo Predictor
+# Sanremo Festival Winner Prediction
 
 Predicting the winner of the Sanremo Music Festival
 has never been so exciting! 🎉
