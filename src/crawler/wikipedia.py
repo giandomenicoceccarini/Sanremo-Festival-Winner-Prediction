@@ -25,6 +25,8 @@ class WikiCrawler(Crawler):
         search_list = [f'{person_name} cantante periodo di attività musicale wikipedia',
                        f'{person_name} cantante wikipedia',
                        f'{person_name} wikipedia']
+        if person_name == 'Olly':
+            search_list = []  # no wikipedia page for Olly
         wiki_result = None
         for search in search_list:
             if wiki_result := WikiCrawler.get_html_page_of_first_duckduckgo_result(search):
