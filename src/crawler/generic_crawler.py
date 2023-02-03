@@ -2,7 +2,6 @@ from typing import Optional
 
 import requests as requests
 from duckduckgo_search import ddg
-from requests import Response
 
 
 class Crawler:
