@@ -31,6 +31,7 @@ class Dataset:
         'Raccolte',
         'Periodo di attività musicale',
         'Etichetta',
+        'Genere',
         'Ospite',
         'ig_follower',
         'ig_follower_ospite',
@@ -55,7 +56,7 @@ class Dataset:
                                      '0.Genere', '0.Genere[1]',
                                      '0.Periodo di attività musicale',
                                      '0.Etichetta', '0.Studio', '0.Raccolte', '0.Strumento']].rename(
-            columns={'0.Periodo di attività musicale': 'Periodo di attività musicale',}
+            columns={'0.Periodo di attività musicale': 'Periodo di attività musicale'}
         )
         selected_info = selected_info.rename(columns={col: col.replace('0.', '') for col in selected_info.columns})
         if 'Pasese d\'origine' in selected_info.columns and 'Nazionalità' in selected_info.columns:
