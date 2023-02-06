@@ -27,10 +27,14 @@ class WikiCrawler(Crawler):
                        f'{person_name} wikipedia']
         if person_name == 'Olly':
             search_list = []  # no wikipedia page for Olly
+
         wiki_result = None
         for search in search_list:
             if wiki_result := WikiCrawler.get_html_page_of_first_duckduckgo_result(search):
                 break
+        if wiki_result is None:
+            return {}
+
         bs = BeautifulSoup(wiki_result, 'html.parser')
 
         # class "infobox sinottico" contains html table with artist summary
