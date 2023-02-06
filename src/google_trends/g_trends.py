@@ -10,13 +10,14 @@ class GTrends:
         self.trend_req = TrendReq()
         list_of_trends = []
         search_suffix = ' cantante'
-        for group_of_five in np.array_split(keywords, 5):
-            self.trend_req.build_payload(kw_list=[f"{x}{search_suffix}" for x in group_of_five], geo='IT')
-            trends = self.trend_req.interest_over_time()
-            trends = trends.rename(columns={x: x.replace(search_suffix, '') for x in trends.columns})
-            if smooth:
-                trends = self.smoother_trends_over_year(trends)
-            list_of_trends.append(trends)
+        for group_of_artists in np.array_split(keywords, max(len(keywords), 5) / 5):
+            if len(group_of_artists) > 0:
+                self.trend_req.build_payload(kw_list=[f"{x}{search_suffix}" for x in group_of_artists], geo='IT')
+                trends = self.trend_req.interest_over_time()
+                trends = trends.rename(columns={x: x.replace(search_suffix, '') for x in trends.columns})
+                if smooth:
+                    trends = self.smoother_trends_over_year(trends)
+                list_of_trends.append(trends)
         self.trends = pd.concat(list_of_trends, axis=1)
 
     @staticmethod
